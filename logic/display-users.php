@@ -1,6 +1,6 @@
 <?php
 
-require "../managers/UserManager.class.php";
+require "managers/UserManager.class.php";
 
 $userManager = new UserManager();
 $userManager->loadUsers();

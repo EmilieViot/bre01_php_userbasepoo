@@ -1,6 +1,6 @@
 <?php
 
-require "../models/User.class.php";
+require "models/User.class.php";
 
 class UserManager {
     
@@ -25,15 +25,16 @@ class UserManager {
                 );
     }
     
+    
     public function getUsers(): array
     {
         return $this->users;
     }
-
     public function setUsers(array $users): void
     {
         $this->users = $users;
     }
+    
     
     public function loadUsers(): void
     {
@@ -44,19 +45,20 @@ class UserManager {
         $usersTab = [];
         
         foreach($usersDatas as $userData) {
-            $user = new User($userData["id"], $userData["username"], $userData["email"], $userData["password"], $userData["role"], $userData["created_at"]);
+            $user = new User($userData["username"], $userData["email"], $userData["password"], $userData["role"], $userData["created_at"]);
             $user->setId($userData["id"]);
             $usersTab[]=$user;
         }
         
         $this->setUsers($usersTab);
-
     }
+    
     
     public function saveUser(): void
     {
         $this->user = $user;
     }
+    
     
     public function deleteUser(): void
     {
